@@ -21,9 +21,9 @@ class _HomePageState extends State<HomePage> {
   late PageController _pageController;
 
   final List<Widget> _pages = [
-    const Expanded(child: SupplierPage()),
-    const Expanded(child: SalesPage()),
-    const Expanded(child: ProductsPage()),
+    const SupplierPage(),
+    const SalesPage(),
+    const ProductsPage(),
   ];
 
   @override
@@ -153,6 +153,9 @@ class _HomePageState extends State<HomePage> {
     }
 
     return TextButton(
+      style: ButtonStyle(
+        overlayColor: MaterialStateProperty.all<Color?>(Colors.transparent)
+      ),
       onPressed: () {
         _changePage(index);
       },
@@ -167,7 +170,9 @@ class _HomePageState extends State<HomePage> {
           ),
           Text(
             buttonText,
-            style: _currentPageIndex != index ?Theme.of(context).textTheme.bodySmall : const TextStyle(color: Colors.black),
+            style: _currentPageIndex != index
+                ? Theme.of(context).textTheme.bodySmall
+                : const TextStyle(color: Colors.black),
           )
         ],
       ),
