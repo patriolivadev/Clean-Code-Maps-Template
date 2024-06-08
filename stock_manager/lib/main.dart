@@ -5,7 +5,7 @@ import 'package:injectable/injectable.dart';
 import 'package:stock_manager/core/routes/router.dart';
 import 'package:stock_manager/core/services/dependencies_service.dart';
 import 'package:stock_manager/core/utils/themes.dart';
-import 'package:stock_manager/firebase_options.dart';
+import 'package:stock_manager/core/services/firebase_options.dart';
 
 void main() async {
   await configureDependencies(Environment.dev);
