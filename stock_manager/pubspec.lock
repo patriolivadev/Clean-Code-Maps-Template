@@ -161,6 +161,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.1.1"
+  core_encode:
+    dependency: "direct main"
+    description:
+      name: core_encode
+      sha256: ffe68b121f9d4ac083877e052739a5ef32d00c87e1d599a4145819d812af44a0
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.0.4"
   crypto:
     dependency: transitive
     description:
@@ -185,6 +193,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.3.6"
+  dartz:
+    dependency: transitive
+    description:
+      name: dartz
+      sha256: e6acf34ad2e31b1eb00948692468c30ab48ac8250e0f0df661e29f12dd252168
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.10.1"
   equatable:
     dependency: "direct main"
     description:

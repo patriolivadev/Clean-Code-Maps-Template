@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SupplierPage extends StatefulWidget {
+  static const routeName = '/suppliers-page';
   const SupplierPage({super.key});
 
   @override

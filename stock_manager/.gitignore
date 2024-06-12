@@ -42,5 +42,10 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
+# Ignorar archivos generados automáticamente
+lib/generated_plugin_registrant.dart
+build/**/generated_plugin.cmake
+
+
 .env
 

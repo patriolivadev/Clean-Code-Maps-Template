@@ -1,78 +1,71 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:stock_manager/core/images/images.dart';
 import 'package:stock_manager/core/services/dependencies_service.dart';
 import 'package:stock_manager/features/products/presentation/pages/products_page.dart';
 import 'package:stock_manager/features/sales/presentation/pages/sales_page.dart';
 import 'package:stock_manager/features/suppliers/presentation/pages/supplier_page.dart';
 import 'package:stock_manager/features/user/presentation/manager/user_bloc.dart';
 
-class HomePage extends StatefulWidget {
+class BottomNavigationBarPage extends StatefulWidget {
   static const routeName = '/';
+  final Widget child;
 
-  const HomePage({super.key});
+  const BottomNavigationBarPage({
+    super.key,
+    required this.child,
+  });
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<BottomNavigationBarPage> createState() =>
+      _BottomNavigationBarPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _BottomNavigationBarPageState extends State<BottomNavigationBarPage> {
   final _bloc = getIt<UserBloc>();
-  int _currentPageIndex = 1; //Iniciar en ventas
-  late PageController _pageController;
-
-  final List<Widget> _pages = [
-    const Expanded(child: SupplierPage()),
-    const Expanded(child: SalesPage()),
-    const Expanded(child: ProductsPage()),
-  ];
+  int _currentPageIndex = 1;
 
   @override
   void initState() {
     super.initState();
-    _pageController = PageController(initialPage: _currentPageIndex);
-  }
-
-  @override
-  void dispose() {
-    _pageController.dispose();
-    super.dispose();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(
-          'StockManager',
-          style: Theme.of(context).textTheme.titleMedium,
-        ),
-        backgroundColor: Theme.of(context).primaryColor,
-        elevation: 5,
-      ),
+      appBar: buildAppBar(context),
       body: BlocConsumer<UserBloc, UserState>(
         bloc: _bloc,
-        listener: (context, state) {
-          // TODO: implement listener
-        },
-        builder: (context, state) {
-          return Column(
-            children: [
-              Expanded(
-                child: PageView(
-                  controller: _pageController,
-                  children: _pages,
-                  onPageChanged: (index) {
-                    updateIndex(index);
-                  },
-                ),
-              ),
-              _buildBottomBar(),
-            ],
-          );
-        },
+        listener: listener,
+        builder: builder,
       ),
+      bottomNavigationBar: _buildBottomBar(),
     );
+  }
+
+  AppBar buildAppBar(BuildContext context) {
+    return AppBar(
+      centerTitle: true,
+      title: Text(
+        'StockManager',
+        style: Theme.of(context).textTheme.titleMedium,
+      ),
+      backgroundColor: Theme.of(context).primaryColor,
+      elevation: 5,
+    );
+  }
+
+  Widget builder(context, state) {
+    return Column(
+      children: [
+        Expanded(child: widget.child),
+      ],
+    );
+  }
+
+  void listener(context, state) {
+    // TODO: implement listener
   }
 
   void updateIndex(index) {
@@ -81,13 +74,21 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  void _changePage(int index) {
+  void _navigateToPage(int index) {
     updateIndex(index);
-    _pageController.animateToPage(
-      index,
-      duration: const Duration(milliseconds: 200),
-      curve: Curves.easeInOut,
-    );
+    switch (index) {
+      case 0:
+        context.go(SupplierPage.routeName);
+        break;
+      case 1:
+        context.go(SalesPage.routeName);
+        break;
+      case 2:
+        context.go(ProductsPage.routeName);
+        break;
+      default:
+        break;
+    }
   }
 
   Widget _buildBottomBar() {
@@ -98,7 +99,7 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.end,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: List.generate(
-          _pages.length,
+          3,
           (index) => _buildBottomBarButton(index),
         ),
       ),
@@ -109,13 +110,13 @@ class _HomePageState extends State<HomePage> {
     Widget button;
     switch (index) {
       case 0:
-        button = _buildImageAssetButton('assets/images/repartidor.png', index);
+        button = _buildImageAssetButton(Images.supplierIcon, index);
         break;
       case 1:
-        button = _buildImageAssetButton('assets/images/ventas.png', index);
+        button = _buildImageAssetButton(Images.salesIcon, index);
         break;
       case 2:
-        button = _buildImageAssetButton('assets/images/productos.png', index);
+        button = _buildImageAssetButton(Images.productIcon, index);
         break;
       default:
         button = _buildIconButton(Icons.error, index);
@@ -131,7 +132,7 @@ class _HomePageState extends State<HomePage> {
         size: _currentPageIndex == index ? 40 : 30,
       ),
       onPressed: () {
-        _changePage(index);
+        _navigateToPage(index);
       },
     );
   }
@@ -153,8 +154,10 @@ class _HomePageState extends State<HomePage> {
     }
 
     return TextButton(
+      style: ButtonStyle(
+          overlayColor: MaterialStateProperty.all<Color?>(Colors.transparent)),
       onPressed: () {
-        _changePage(index);
+        _navigateToPage(index);
       },
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -167,7 +170,9 @@ class _HomePageState extends State<HomePage> {
           ),
           Text(
             buttonText,
-            style: _currentPageIndex != index ?Theme.of(context).textTheme.bodySmall : const TextStyle(color: Colors.black),
+            style: _currentPageIndex != index
+                ? Theme.of(context).textTheme.bodySmall
+                : const TextStyle(color: Colors.black),
           )
         ],
       ),

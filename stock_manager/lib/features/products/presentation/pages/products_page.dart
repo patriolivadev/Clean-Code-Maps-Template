@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class ProductsPage extends StatefulWidget {
+  static const routeName = '/products-page';
   const ProductsPage({super.key});
 
   @override

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 class SalesPage extends StatefulWidget {
+  static const routeName = '/';
   const SalesPage({super.key});
 
   @override
