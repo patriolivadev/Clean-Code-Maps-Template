@@ -43,6 +43,7 @@ dependencies:
   injectable_generator: ^2.4.1
   firebase_core: ^2.25.5
   core_encode: ^1.0.4
+  cloud_firestore: ^4.15.8
 
 dev_dependencies:
   flutter_test:

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import 'package:stock_manager/features/products/presentation/pages/products_page.dart';
+import 'package:stock_manager/features/product/presentation/pages/products_page.dart';
 import 'package:stock_manager/features/sales/presentation/pages/sales_page.dart';
 import 'package:stock_manager/features/suppliers/presentation/pages/supplier_page.dart';
 import 'package:stock_manager/features/user/presentation/pages/bottom_navigation_bar_page.dart';

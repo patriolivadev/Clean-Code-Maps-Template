@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:stock_manager/core/images/images.dart';
 import 'package:stock_manager/core/services/dependencies_service.dart';
-import 'package:stock_manager/features/products/presentation/pages/products_page.dart';
+import 'package:stock_manager/features/product/presentation/pages/products_page.dart';
 import 'package:stock_manager/features/sales/presentation/pages/sales_page.dart';
 import 'package:stock_manager/features/suppliers/presentation/pages/supplier_page.dart';
 import 'package:stock_manager/features/user/presentation/manager/user_bloc.dart';
