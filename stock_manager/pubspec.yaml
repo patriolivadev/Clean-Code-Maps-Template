@@ -41,7 +41,6 @@ dependencies:
   equatable: ^2.0.5
   injectable: ^2.3.2
   injectable_generator: ^2.4.1
-  firebase_core: ^2.25.5
   core_encode: ^1.0.4
 
 dev_dependencies:
