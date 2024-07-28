@@ -1,4 +1,4 @@
-import 'package:stock_manager/features/products/domain/entities/product.dart';
+import 'package:stock_manager/features/product/domain/entities/product.dart';
 
 class ProductModel extends Product {
   ProductModel({
