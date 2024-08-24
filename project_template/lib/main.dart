@@ -1,22 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:injectable/injectable.dart';
-import 'package:stock_manager/core/routes/router.dart';
-import 'package:stock_manager/core/services/dependencies_service.dart';
-import 'package:stock_manager/core/utils/themes.dart';
+import 'package:project_template/core/routes/router.dart';
+import 'package:project_template/core/services/dependencies_service.dart';
+import 'package:project_template/core/utils/themes.dart';
 
 void main() async {
   await configureDependencies(Environment.dev);
 
   SystemChrome.setPreferredOrientations([
     DeviceOrientation.portraitUp,
-  ]);
-  runApp(const MyApp());
+  ]);  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
   @override
   Widget build(BuildContext context) {
     SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle(
