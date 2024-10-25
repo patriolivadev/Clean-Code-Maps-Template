@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "418088605171",
+    "project_id": "market-mate-b9376",
+    "storage_bucket": "market-mate-b9376.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:418088605171:android:40d280ca1a0195a6266e86",
+        "android_client_info": {
+          "package_name": "com.patriolivadev.market_mate"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApE6Gv906FcjKNdMkrXlnDPX8HX_j_mF4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
